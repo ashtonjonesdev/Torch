@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="Sign out"
+    app:showAsAction="never"
+    android:orderInCategory="100"
+    android:id="@+id/sign_in_fragment_dest"/>
+
+    <item
+        android:title="About developer"
+        app:showAsAction="never"
+        android:orderInCategory="90"
+        android:id="@+id/about_developer_fragment_dest"/>
+
+    <item
+        android:title="Welcome"
+        app:showAsAction="never"
+        android:id="@+id/welcome_fragment_dest"
+        android:orderInCategory="80"/>
+</menu>
