@@ -25,4 +25,14 @@
         android:name="dev.ashtonjones.torch.fragments.WelcomeFragment"
         android:label="Welcome"
         tools:layout="@layout/fragment_welcome" />
+    <fragment
+        android:id="@+id/set_torch_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.SetTorchFragment"
+        android:label="Set your torch"
+        tools:layout="@layout/fragment_set_torch"/>
+    <fragment
+        android:id="@+id/change_torch_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.ChangeTorch"
+        android:label="Change your torch"
+        tools:layout="@layout/fragment_change_torch"/>
 </navigation>

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,63 +16,64 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 
 import dev.ashtonjones.torch.R;
+import dev.ashtonjones.torch.databinding.FragmentHomeBinding;
+import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
+import dev.ashtonjones.torch.datalayer.viewmodel.HomeFragmentViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
 
-    ImageView torchImageView;
-    MaterialTextView guidingLightTextView;
-    MaterialTextView goalFocusTextView;
-    SpeedDialView speedDialFAB;
+    private FragmentHomeBinding binding;
+    private HomeFragmentViewModel viewModel;
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+        return binding.getRoot();
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initViews();
+        setUpViewModel();
 
         setUpSpeedDialFAB();
     }
 
+    private void setUpViewModel() {
 
-    private void initViews() {
-
-        torchImageView = getView().findViewById(R.id.torch_image_view);
-
-        guidingLightTextView = getView().findViewById(R.id.guiding_light_text_view);
-
-//        goalFocusTextView = getView().findViewById(R.id.goal_focus_text_view);
-
-        speedDialFAB = getView().findViewById(R.id.speed_dial_fab);
+        viewModel = new ViewModelProvider(this).get(HomeFragmentViewModel.class);
 
     }
 
 
     private void setUpSpeedDialFAB() {
 
-        speedDialFAB.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_change_guiding_light_action, R.drawable.ic_call_split_black_24dp).create());
+        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_change_torch_action, R.drawable.ic_call_split_black_24dp).setLabel("Change torch").create());
 
-        speedDialFAB.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_check_in_action, R.drawable.ic_format_align_left_black_24dp).create());
+        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_check_in_action, R.drawable.ic_format_align_left_black_24dp).create());
 
-        speedDialFAB.setOnChangeListener(new SpeedDialView.OnChangeListener() {
+        binding.speedDialFab.setOnChangeListener(new SpeedDialView.OnChangeListener() {
             @Override
             public boolean onMainActionSelected() {
                 return false;
@@ -82,15 +86,17 @@ public class HomeFragment extends Fragment {
         });
 
 
-        speedDialFAB.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
+        binding.speedDialFab.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
             @Override
             public boolean onActionSelected(SpeedDialActionItem actionItem) {
 
                 switch (actionItem.getId()) {
 
-                    case R.id.fab_change_guiding_light_action:
+                    case R.id.fab_change_torch_action:
 
-                        Toast.makeText(getContext(), "Change Guiding Light action clicked!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Change torch action clicked!", Toast.LENGTH_SHORT).show();
+
+                        Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
 
                     case R.id.fab_check_in_action:
 
@@ -109,6 +115,20 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
+        viewModel.getTorchMessageLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String torchMessage) {
+                binding.torchMessageTextView.setText(torchMessage);
+            }
+        });
 
     }
 }
