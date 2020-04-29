@@ -84,8 +84,8 @@
             android:drawableStart="@drawable/ic_fire_24dp"
             android:drawableLeft="@drawable/ic_fire_24dp"
             android:drawablePadding="12dp"
-            android:inputType="textMultiLine"
-            android:imeOptions="actionNone"
+            android:imeOptions="actionNext"
+            android:inputType="textMultiLine|textCapSentences"
             android:selectAllOnFocus="true"
             android:text="" />
 

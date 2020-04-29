@@ -2,9 +2,11 @@
 <resources>
 
     <!--Unique ids for the SpeedDial Fab actions-->
-    <item name="fab_check_in_action" type="id" />
-    <item name="fab_journal_action" type="id" />
     <item name="fab_change_torch_action" type="id" />
+    <item name="fab_journal_action" type="id" />
+<!--    <item name="fab_check_in_action" type="id" />-->
+
+
 
     <!--TODO: Edit or remove these to reflect the SpeedDial Fab actions used-->
     <item name="fab_long_label" type="id" />

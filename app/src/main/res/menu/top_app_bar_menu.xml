@@ -15,6 +15,12 @@
         android:id="@+id/torch_discovery_nav_graph"/>
 
     <item
+        android:title="Discovery summary"
+        app:showAsAction="never"
+        android:orderInCategory="30"
+        android:id="@+id/torch_discovery_answers_summary_fragment_dest"/>
+
+    <item
         android:title="About developer"
         app:showAsAction="never"
         android:orderInCategory="90"

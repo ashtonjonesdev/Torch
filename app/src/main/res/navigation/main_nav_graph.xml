@@ -111,4 +111,9 @@
     <action
         android:id="@+id/action_global_torch_discovery_nav_graph"
         app:destination="@id/torch_discovery_nav_graph" />
+    <fragment
+        android:id="@+id/torch_discovery_answers_summary_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryAnswersSummaryFragment"
+        android:label="Discovery summary"
+        tools:layout="@layout/fragment_torch_discovery_answers_summary" />
 </navigation>

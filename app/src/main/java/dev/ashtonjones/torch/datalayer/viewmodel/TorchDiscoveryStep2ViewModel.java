@@ -17,7 +17,7 @@ public class TorchDiscoveryStep2ViewModel extends ViewModel {
 
     public void updateTorchDiscoveryTwoAnswer(String discoveryTwoAnswer) {
 
-        firebaseRepository.updateTorchDiscoveryOneAnswer(discoveryTwoAnswer);
+        firebaseRepository.updateTorchDiscoveryTwoAnswer(discoveryTwoAnswer);
 
     }
 

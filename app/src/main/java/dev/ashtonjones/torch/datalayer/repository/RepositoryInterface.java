@@ -6,6 +6,12 @@ public interface RepositoryInterface {
 
     MutableLiveData<String> getTorchMessageLiveData();
 
+    MutableLiveData<String> getDiscoveryAnswerOneLiveData();
+
+    MutableLiveData<String> getDiscoveryAnswerTwoLiveData();
+
+    MutableLiveData<String> getDiscoveryAnswerThreeLiveData();
+
     void updateTorchMessage(String newTorchMessage);
 
     void updateTorchDiscoveryOneAnswer(String discoveryOneAnswer);
