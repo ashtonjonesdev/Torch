@@ -16,23 +16,99 @@
         android:label="About Developer"
         tools:layout="@layout/fragment_about_developer" />
     <fragment
-        android:id="@+id/sign_in_fragment_dest"
-        android:name="dev.ashtonjones.torch.fragments.SignInFragment"
-        android:label="Sign in"
-        tools:layout="@layout/fragment_sign_in" />
-    <fragment
-        android:id="@+id/welcome_fragment_dest"
-        android:name="dev.ashtonjones.torch.fragments.WelcomeFragment"
-        android:label="Welcome"
-        tools:layout="@layout/fragment_welcome" />
-    <fragment
-        android:id="@+id/set_torch_fragment_dest"
-        android:name="dev.ashtonjones.torch.fragments.SetTorchFragment"
-        android:label="Set your torch"
-        tools:layout="@layout/fragment_set_torch"/>
-    <fragment
         android:id="@+id/change_torch_fragment_dest"
         android:name="dev.ashtonjones.torch.fragments.ChangeTorch"
         android:label="Change your torch"
-        tools:layout="@layout/fragment_change_torch"/>
+        tools:layout="@layout/fragment_change_torch" />
+    <fragment
+        android:id="@+id/journal_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.JournalFragment"
+        android:label="Journal"
+        tools:layout="@layout/fragment_journal" />
+    <navigation
+        android:id="@+id/welcome_nav_graph"
+        android:label="Welcome"
+        app:startDestination="@id/welcome_fragment_dest">
+        <fragment
+            android:id="@+id/welcome_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.WelcomeFragment"
+            android:label="Welcome"
+            tools:layout="@layout/fragment_welcome">
+            <action
+                android:id="@+id/action_welcome_fragment_dest_to_set_torch_fragment_dest"
+                app:destination="@id/set_torch_fragment_dest" />
+        </fragment>
+        <fragment
+            android:id="@+id/set_torch_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.SetTorchFragment"
+            android:label="Set your torch"
+            tools:layout="@layout/fragment_set_torch" />
+    </navigation>
+    <action
+        android:id="@+id/action_global_welcome_nav_graph"
+        app:destination="@id/welcome_nav_graph"
+        app:popUpTo="@id/main_nav_graph" />
+    <navigation
+        android:id="@+id/sign_in_nav_graph"
+        android:label="@string/common_signin_button_text"
+        app:startDestination="@id/sign_in_fragment_dest">
+        <fragment
+            android:id="@+id/sign_in_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.SignInFragment"
+            android:label="Sign in"
+            tools:layout="@layout/fragment_sign_in" />
+    </navigation>
+    <action
+        android:id="@+id/action_global_sign_in_nav_graph"
+        app:destination="@id/sign_in_nav_graph"
+        app:popUpTo="@id/sign_in_nav_graph" />
+    <navigation
+        android:id="@+id/torch_discovery_nav_graph"
+        android:label="Torch Discovery"
+        app:startDestination="@id/torch_discovery_introduction_fragment_dest">
+        <fragment
+            android:id="@+id/torch_discovery_step_1_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryStep1Fragment"
+            android:label="Torch Discovery"
+            tools:layout="@layout/fragment_torch_discovery_step1">
+            <action
+                android:id="@+id/action_torch_discovery_step_1_fragment_dest_to_torch_discovery_step_2_fragment_dest"
+                app:destination="@id/torch_discovery_step_2_fragment_dest" />
+        </fragment>
+        <fragment
+            android:id="@+id/torch_discovery_step_2_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryStep2Fragment"
+            android:label="Torch Discovery"
+            tools:layout="@layout/fragment_torch_discovery_step2">
+            <action
+                android:id="@+id/action_torch_discovery_step_2_fragment_dest_to_torchDiscoveryStep3Fragment"
+                app:destination="@id/torch_discovery_step_3_fragment_dest" />
+        </fragment>
+        <fragment
+            android:id="@+id/torch_discovery_introduction_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryIntroductionFragment"
+            android:label="Torch Discovery"
+            tools:layout="@layout/fragment_torch_discovery_introduction">
+            <action
+                android:id="@+id/action_torch_discovery_introduction_fragment_dest_to_torch_discovery_step_1_fragment_dest"
+                app:destination="@id/torch_discovery_step_1_fragment_dest" />
+        </fragment>
+        <fragment
+            android:id="@+id/torch_discovery_review_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryReviewFragment"
+            android:label="Torch Discovery"
+            tools:layout="@layout/fragment_torch_discovery_review" />
+        <fragment
+            android:id="@+id/torch_discovery_step_3_fragment_dest"
+            android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryStep3Fragment"
+            android:label="Torch Discovery"
+            tools:layout="@layout/fragment_torch_discovery_step3" >
+            <action
+                android:id="@+id/action_torch_discovery_step_3_fragment_dest_to_torch_discovery_review_fragment_dest"
+                app:destination="@id/torch_discovery_review_fragment_dest" />
+        </fragment>
+    </navigation>
+    <action
+        android:id="@+id/action_global_torch_discovery_nav_graph"
+        app:destination="@id/torch_discovery_nav_graph" />
 </navigation>

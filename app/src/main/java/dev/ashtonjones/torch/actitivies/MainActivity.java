@@ -1,9 +1,11 @@
 package dev.ashtonjones.torch.actitivies;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -11,6 +13,12 @@ import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import dev.ashtonjones.torch.R;
 
@@ -35,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(topAppToolbar);
 
         initUIComponentsWithNavigation();
+
+        showOrHideToolbar();
+
 
     }
 
@@ -65,6 +76,49 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.sign_out_button) {
+
+            signOut();
+
+        }
+
         return NavigationUI.onNavDestinationSelected(item, navController) || super.onOptionsItemSelected(item);
+    }
+
+    private void showOrHideToolbar() {
+
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+
+                // Hide the Toolbar in the Sign In Fragment and Welcome Fragment
+                if(destination.getId() == R.id.sign_in_fragment_dest || destination.getId() == R.id.welcome_fragment_dest || destination.getId() == R.id.set_torch_fragment_dest) {
+
+                    topAppToolbar.setVisibility(View.GONE);
+
+                }
+
+                else {
+
+                    topAppToolbar.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+    }
+
+    private void signOut() {
+
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(getApplicationContext(), "Signed out", Toast.LENGTH_SHORT).show();
+
+                navController.navigate(R.id.sign_in_nav_graph);
+            }
+        });
+
     }
 }

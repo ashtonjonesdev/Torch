@@ -37,11 +37,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/torch_message_text_view"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:padding="8dp"
-                android:text="Hello"
+                android:layout_margin="8dp"
+                android:text=""
+                android:hint="Goal/Focus"
                 android:textAlignment="center"
                 android:textColor="@color/colorOnSurface"
                 android:textStyle="bold"
@@ -54,20 +55,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <!--    <com.google.android.material.textview.MaterialTextView-->
-    <!--        android:id="@+id/goal_focus_text_view"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintRight_toRightOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/guiding_light_text_view"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:hint="Goal/Focus"-->
-    <!--        android:textAlignment="center"-->
-    <!--       />-->
 
     <com.leinardi.android.speeddial.SpeedDialView
         android:id="@+id/speed_dial_fab"

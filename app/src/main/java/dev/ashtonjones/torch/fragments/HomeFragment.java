@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.textview.MaterialTextView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
@@ -71,7 +73,7 @@ public class HomeFragment extends Fragment {
 
         binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_change_torch_action, R.drawable.ic_call_split_black_24dp).setLabel("Change torch").create());
 
-        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_check_in_action, R.drawable.ic_format_align_left_black_24dp).create());
+        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_journal_action, R.drawable.ic_format_align_left_black_24dp).setLabel("View journal").create());
 
         binding.speedDialFab.setOnChangeListener(new SpeedDialView.OnChangeListener() {
             @Override
@@ -98,15 +100,17 @@ public class HomeFragment extends Fragment {
 
                         Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
 
-                    case R.id.fab_check_in_action:
+                    case R.id.fab_journal_action:
 
-                        Toast.makeText(getContext(), "Check in action clicked!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Journal action clicked!", Toast.LENGTH_SHORT).show();
 
                         return false;
 
                     default:
 
                         Toast.makeText(getContext(), "Error in SpeedDial Fab action", Toast.LENGTH_SHORT).show();
+
+                        Navigation.findNavController(getView()).navigate(R.id.journal_fragment_dest);
 
                         return false;
 
@@ -123,12 +127,24 @@ public class HomeFragment extends Fragment {
 
         super.onResume();
 
-        viewModel.getTorchMessageLiveData().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String torchMessage) {
-                binding.torchMessageTextView.setText(torchMessage);
-            }
-        });
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (firebaseUser == null) {
+
+            Navigation.findNavController(getView()).navigate(R.id.action_global_sign_in_nav_graph);
+
+        }
+
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+            viewModel.getTorchMessageLiveData().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(String torchMessage) {
+                    binding.torchMessageTextView.setText(torchMessage);
+                }
+            });
+
+        }
 
     }
 }

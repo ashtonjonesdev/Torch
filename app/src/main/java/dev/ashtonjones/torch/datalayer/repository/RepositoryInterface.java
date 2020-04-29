@@ -8,4 +8,11 @@ public interface RepositoryInterface {
 
     void updateTorchMessage(String newTorchMessage);
 
+    void updateTorchDiscoveryOneAnswer(String discoveryOneAnswer);
+
+    void updateTorchDiscoveryTwoAnswer(String discoveryTwoAnswer);
+
+    void updateTorchDiscoveryThreeAnswer(String discoveryThreeAnswer);
+
+
 }

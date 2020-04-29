@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.os.Handler;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentChangeTorchBinding;
 import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
+import dev.ashtonjones.torch.datalayer.viewmodel.ChangeTorchViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,7 @@ import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
 public class ChangeTorch extends Fragment {
 
     private FragmentChangeTorchBinding binding;
+    private ChangeTorchViewModel viewModel;
 
     public ChangeTorch() {
         // Required empty public constructor
@@ -42,7 +45,15 @@ public class ChangeTorch extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setUpViewModel();
+
         setClickListeners();
+    }
+
+    private void setUpViewModel() {
+
+        viewModel = new ViewModelProvider(this).get(ChangeTorchViewModel.class);
+
     }
 
     private void setClickListeners() {
@@ -55,9 +66,7 @@ public class ChangeTorch extends Fragment {
                     // Update torchMessage in database
                     String newTorchMessage = binding.textInputEditTextTorchChangeTorch.getText().toString();
 
-                    FirebaseRepository firebaseRepository = new FirebaseRepository();
-
-                    firebaseRepository.updateTorchMessage(newTorchMessage);
+                    viewModel.updateTorchMessage(newTorchMessage);
 
                     // Change drawable from unlit to lit
                     binding.unlitTorchSetTorch.setImageResource(R.drawable.app_icon_torch);

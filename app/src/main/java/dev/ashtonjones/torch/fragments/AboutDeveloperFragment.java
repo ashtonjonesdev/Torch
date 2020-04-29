@@ -88,10 +88,9 @@ public class AboutDeveloperFragment extends Fragment {
                 .setLinksColumnsCount(5)
                 .addWebsiteLink("https://ashtonjones.dev/")
                 .addEmailLink("ashtonjonesdev@gmail.com")
-                .addLinkedInLink("https://www.linkedin.com/in/tjgrapes/")
-                .addGooglePlayStoreLink("https://play.google.com/store/apps/developer?id=Ashton+Jones")
-                .addGitHubLink("https://github.com/ashtonjonesdev")
-
+                .addLinkedInLink("tjgrapes")
+                .addGooglePlayStoreLink("8786079395794167171")
+                .addGitHubLink("ashtonjonesdev")
                 .addFiveStarsAction()
                 .setVersionNameAsAppSubTitle()
                 .addShareAction(R.string.app_name)

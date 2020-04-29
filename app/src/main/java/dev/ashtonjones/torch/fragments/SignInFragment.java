@@ -126,7 +126,7 @@ public class SignInFragment extends Fragment {
                 // Create a new User in the database
                 createNewUser();
 
-                Navigation.findNavController(getView()).navigate(R.id.welcome_fragment_dest);
+                Navigation.findNavController(getView()).navigate(R.id.welcome_nav_graph);
 
 
             } else {

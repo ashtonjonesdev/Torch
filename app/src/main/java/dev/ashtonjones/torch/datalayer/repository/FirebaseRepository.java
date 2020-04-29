@@ -13,8 +13,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import dev.ashtonjones.torch.datamodels.User;
-
 public class FirebaseRepository implements RepositoryInterface {
 
     private static final String LOG_TAG = FirebaseRepository.class.getSimpleName();
@@ -22,6 +20,19 @@ public class FirebaseRepository implements RepositoryInterface {
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
     private MutableLiveData<String> torchMessageLiveData;
+
+    private MutableLiveData<String> discoveryAnswerOneLiveData;
+
+    private MutableLiveData<String> discoveryAnswerTwoLiveData;
+
+    private MutableLiveData<String> discoveryAnswerThreeLiveData;
+
+
+
+
+
+
+
 
     @Override
     public MutableLiveData<String> getTorchMessageLiveData() {
@@ -37,11 +48,13 @@ public class FirebaseRepository implements RepositoryInterface {
 
                     if(documentSnapshot.exists()) {
 
-                        User user = documentSnapshot.toObject(User.class);
+//                        User user = documentSnapshot.toObject(User.class);
 
-                        Log.d(LOG_TAG, "Torch message: " + user.getTorchMessage());
+                        String torchMessage = documentSnapshot.getString("torchMessage");
 
-                        torchMessageLiveData.postValue(user.getTorchMessage());
+                        Log.d(LOG_TAG, "Torch message: " + torchMessage);
+
+                        torchMessageLiveData.postValue(torchMessage);
 
                     }
 
@@ -54,12 +67,117 @@ public class FirebaseRepository implements RepositoryInterface {
 
     }
 
+    public MutableLiveData<String> getDiscoveryAnswerOneLiveData() {
+
+        discoveryAnswerOneLiveData = new MutableLiveData<>();
+
+        firebaseFirestore.collection("users").document(getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+
+                    DocumentSnapshot documentSnapshot = task.getResult();
+
+                    if(documentSnapshot.exists()) {
+
+                        String answer = documentSnapshot.getString("torchDiscoveryOneAnswer");
+
+                        discoveryAnswerOneLiveData.postValue(answer);
+
+                    }
+
+                }
+            }
+        });
+
+        return discoveryAnswerOneLiveData;
+    }
+
+    public MutableLiveData<String> getDiscoveryAnswerTwoLiveData() {
+        discoveryAnswerTwoLiveData = new MutableLiveData<>();
+
+        firebaseFirestore.collection("users").document(getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+
+                    DocumentSnapshot documentSnapshot = task.getResult();
+
+                    if(documentSnapshot.exists()) {
+
+                        String answer = documentSnapshot.getString("torchDiscoveryTwoAnswer");
+
+                        discoveryAnswerTwoLiveData.postValue(answer);
+
+                    }
+
+                }
+            }
+        });
+
+        return discoveryAnswerTwoLiveData;
+    }
+
+    public MutableLiveData<String> getDiscoveryAnswerThreeLiveData() {
+        discoveryAnswerThreeLiveData = new MutableLiveData<>();
+
+        firebaseFirestore.collection("users").document(getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+
+                    DocumentSnapshot documentSnapshot = task.getResult();
+
+                    if(documentSnapshot.exists()) {
+
+                        String answer = documentSnapshot.getString("torchDiscoveryThreeAnswer");
+
+                        discoveryAnswerThreeLiveData.postValue(answer);
+
+                    }
+
+                }
+            }
+        });
+
+        return discoveryAnswerThreeLiveData;
+    }
+
     @Override
     public void updateTorchMessage(String newTorchMessage) {
 
         DocumentReference documentReference  = getUserDocument(getUid());
 
         documentReference.update("torchMessage", newTorchMessage);
+
+
+    }
+
+    @Override
+    public void updateTorchDiscoveryOneAnswer(String discoveryOneAnswer) {
+
+        DocumentReference documentReference  = getUserDocument(getUid());
+
+        documentReference.update("torchDiscoveryOneAnswer", discoveryOneAnswer);
+
+    }
+
+    @Override
+    public void updateTorchDiscoveryTwoAnswer(String discoveryTwoAnswer) {
+
+        DocumentReference documentReference  = getUserDocument(getUid());
+
+        documentReference.update("torchDiscoveryTwoAnswer", discoveryTwoAnswer);
+
+
+    }
+
+    @Override
+    public void updateTorchDiscoveryThreeAnswer(String discoveryThreeAnswer) {
+
+        DocumentReference documentReference  = getUserDocument(getUid());
+
+        documentReference.update("torchDiscoveryThreeAnswer", discoveryThreeAnswer);
 
 
     }

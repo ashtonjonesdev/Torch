@@ -12,16 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import dev.ashtonjones.torch.R;
-import dev.ashtonjones.torch.databinding.FragmentWelcomeBinding;
+import dev.ashtonjones.torch.databinding.FragmentTorchDiscoveryIntroductionBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WelcomeFragment extends Fragment {
+public class TorchDiscoveryIntroductionFragment extends Fragment {
 
-    private FragmentWelcomeBinding binding;
+    FragmentTorchDiscoveryIntroductionBinding binding;
 
-    public WelcomeFragment() {
+    public TorchDiscoveryIntroductionFragment() {
         // Required empty public constructor
     }
 
@@ -29,33 +29,21 @@ public class WelcomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        binding = FragmentWelcomeBinding.inflate(inflater, container, false);
+        binding = FragmentTorchDiscoveryIntroductionBinding.inflate(getLayoutInflater(), container, false);
 
         return binding.getRoot();
-
-        // Inflate the layout for this fragment
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
         super.onViewCreated(view, savedInstanceState);
 
-        setUpClickListeners();
-
-
-    }
-
-    private void setUpClickListeners() {
-
-        binding.setYourTorchFab.setOnClickListener(new View.OnClickListener() {
+        binding.torchDiscoveryIntroductionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Navigation.findNavController(getView()).navigate(R.id.action_welcome_fragment_dest_to_set_torch_fragment_dest);
-
+                Navigation.findNavController(getView()).navigate(R.id.action_torch_discovery_introduction_fragment_dest_to_torch_discovery_step_1_fragment_dest);
             }
         });
+
     }
 }
