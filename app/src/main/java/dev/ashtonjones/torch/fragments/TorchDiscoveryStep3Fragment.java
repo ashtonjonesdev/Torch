@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
@@ -74,5 +75,21 @@ public class TorchDiscoveryStep3Fragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(TorchDiscoveryStep3ViewModel.class);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        viewModel.getDiscoveryAnswerThreeLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s != null && s.length() != 0) {
+
+                    binding.textInputEditTextTorchDiscoveryStep3.setText(s);
+
+                }
+            }
+        });
     }
 }

@@ -114,6 +114,6 @@
     <fragment
         android:id="@+id/torch_discovery_answers_summary_fragment_dest"
         android:name="dev.ashtonjones.torch.fragments.TorchDiscoveryAnswersSummaryFragment"
-        android:label="Discovery summary"
+        android:label="Discovery Summary"
         tools:layout="@layout/fragment_torch_discovery_answers_summary" />
 </navigation>

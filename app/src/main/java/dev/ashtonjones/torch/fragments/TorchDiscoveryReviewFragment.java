@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentTorchDiscoveryReviewBinding;
+import dev.ashtonjones.torch.datalayer.viewmodel.TorchDiscoveryReviewViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +23,7 @@ import dev.ashtonjones.torch.databinding.FragmentTorchDiscoveryReviewBinding;
 public class TorchDiscoveryReviewFragment extends Fragment {
 
     private FragmentTorchDiscoveryReviewBinding binding;
+    private TorchDiscoveryReviewViewModel viewModel;
 
     public TorchDiscoveryReviewFragment() {
         // Required empty public constructor
@@ -40,12 +44,60 @@ public class TorchDiscoveryReviewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.torchDiscoveryReviewContinueButton.setOnClickListener(new View.OnClickListener() {
+        setUpViewModel();
+
+        binding.torchDiscoverySummaryFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getView()).popBackStack(R.id.torch_discovery_nav_graph, true);
+                Navigation.findNavController(getView()).navigate(R.id.torch_discovery_answers_summary_fragment_dest);
             }
         });
+
+    }
+
+    private void setUpViewModel() {
+
+        viewModel = new ViewModelProvider(this).get(TorchDiscoveryReviewViewModel.class);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        viewModel.getDiscoveryAnswerOneLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s != null && s.length() != 0) {
+
+                    binding.discoveryReviewAnswerOneTextView.setText(s);
+
+                }
+            }
+        });
+
+        viewModel.getDiscoveryAnswerTwoLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s != null && s.length() != 0) {
+
+                    binding.discoveryReviewAnswerTwoTextView.setText(s);
+
+                }
+            }
+        });
+
+        viewModel.getDiscoveryAnswerThreeLiveData().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if(s != null && s.length() != 0) {
+
+                    binding.discoveryReviewAnswerThreeTextView.setText(s);
+
+                }
+            }
+        });
+
 
     }
 }

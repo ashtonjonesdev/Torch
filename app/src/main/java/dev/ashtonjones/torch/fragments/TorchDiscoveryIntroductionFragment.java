@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentTorchDiscoveryIntroductionBinding;
 
@@ -44,6 +47,20 @@ public class TorchDiscoveryIntroductionFragment extends Fragment {
                 Navigation.findNavController(getView()).navigate(R.id.action_torch_discovery_introduction_fragment_dest_to_torch_discovery_step_1_fragment_dest);
             }
         });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(firebaseUser != null) {
+
+            binding.nameDiscoveryIntroductionTextView.setText(firebaseUser.getDisplayName() + ",");
+
+        }
 
     }
 }

@@ -26,13 +26,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="name"
-        android:text="Ashton,"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/torch_discovery_introduction_text_view"
         android:layout_marginTop="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         />
 
@@ -40,13 +40,13 @@
         android:id="@+id/answer_discovery_questions_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Let's discover your primary focus, goal, or purpose by answering the following questions"
+        android:text="Let's discover your primary focus, goal, or purpose by answering the following questions. You can change any of your previous answers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name_discovery_introduction_text_view"
         android:layout_marginTop="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textAlignment="center"
         />
 

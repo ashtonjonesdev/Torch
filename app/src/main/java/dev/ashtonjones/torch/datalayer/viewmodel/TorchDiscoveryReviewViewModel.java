@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel;
 import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
 import dev.ashtonjones.torch.datalayer.repository.RepositoryInterface;
 
-public class TorchDiscoveryAnswersSummaryViewModel extends ViewModel {
+public class TorchDiscoveryReviewViewModel extends ViewModel {
 
-    RepositoryInterface firebaseRespository;
+    private RepositoryInterface firebaseRepository;
 
     private MutableLiveData<String> discoveryAnswerOneLiveData;
 
@@ -16,39 +16,30 @@ public class TorchDiscoveryAnswersSummaryViewModel extends ViewModel {
 
     private MutableLiveData<String> discoveryAnswerThreeLiveData;
 
-    private MutableLiveData<String> torchMessageLiveData;
+    public TorchDiscoveryReviewViewModel() {
 
-    public TorchDiscoveryAnswersSummaryViewModel() {
-
-        firebaseRespository = new FirebaseRepository();
+        firebaseRepository = new FirebaseRepository();
 
     }
 
     public MutableLiveData<String> getDiscoveryAnswerOneLiveData() {
 
-        discoveryAnswerOneLiveData = firebaseRespository.getDiscoveryAnswerOneLiveData();
+        discoveryAnswerOneLiveData = firebaseRepository.getDiscoveryAnswerOneLiveData();
 
         return discoveryAnswerOneLiveData;
     }
 
     public MutableLiveData<String> getDiscoveryAnswerTwoLiveData() {
 
-        discoveryAnswerTwoLiveData = firebaseRespository.getDiscoveryAnswerTwoLiveData();
+        discoveryAnswerTwoLiveData = firebaseRepository.getDiscoveryAnswerTwoLiveData();
 
         return discoveryAnswerTwoLiveData;
     }
 
     public MutableLiveData<String> getDiscoveryAnswerThreeLiveData() {
 
-        discoveryAnswerThreeLiveData = firebaseRespository.getDiscoveryAnswerThreeLiveData();
+        discoveryAnswerThreeLiveData = firebaseRepository.getDiscoveryAnswerThreeLiveData();
 
         return discoveryAnswerThreeLiveData;
-    }
-
-    public MutableLiveData<String> getTorchMessageLiveData() {
-
-        torchMessageLiveData = firebaseRespository.getTorchMessageLiveData();
-
-        return torchMessageLiveData;
     }
 }
