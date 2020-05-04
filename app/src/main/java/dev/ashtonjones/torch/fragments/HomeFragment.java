@@ -22,6 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.leinardi.android.speeddial.SpeedDialView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentHomeBinding;
 import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
@@ -103,6 +106,8 @@ public class HomeFragment extends Fragment {
                     case R.id.fab_journal_action:
 
                         Toast.makeText(getContext(), "Journal action clicked!", Toast.LENGTH_SHORT).show();
+
+                        Navigation.findNavController(getView()).navigate(R.id.journal_fragment_dest);
 
                         return false;
 

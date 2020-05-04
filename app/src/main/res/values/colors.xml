@@ -18,9 +18,9 @@
     <color name="colorPrimary900">#ED7327</color>
 
     // Secondary/Accent color
-    <color name="colorSecondary">#F5BD36</color> //
-    <color name="colorAccent">#F5BD36</color> //
-    <color name="colorSecondaryVariant">#F8D15E</color>
+    <color name="colorSecondary">#2E83F2</color> //
+    <color name="colorAccent">#2E83F2</color> //
+    <color name="colorSecondaryVariant">#91c8ff</color>
 
     // Surface Colors
     <color name="colorSurface">#FFFFFF</color>

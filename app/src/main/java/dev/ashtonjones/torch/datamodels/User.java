@@ -1,10 +1,14 @@
 package dev.ashtonjones.torch.datamodels;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class User {
 
     private String name;
     private String uID;
     private String torchMessage;
+    private ArrayList<JournalEntry> journalEntries;
 
     public User(String name, String uID) {
         this.name = name;
@@ -22,6 +26,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public ArrayList<JournalEntry> getJournalEntries() {
+        return journalEntries;
     }
 
     public void setName(String name) {

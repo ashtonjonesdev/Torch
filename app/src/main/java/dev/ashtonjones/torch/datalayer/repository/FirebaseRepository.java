@@ -11,7 +11,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+
+import dev.ashtonjones.torch.datamodels.JournalEntry;
+import dev.ashtonjones.torch.datamodels.User;
 
 public class FirebaseRepository implements RepositoryInterface {
 
@@ -26,6 +32,8 @@ public class FirebaseRepository implements RepositoryInterface {
     private MutableLiveData<String> discoveryAnswerTwoLiveData;
 
     private MutableLiveData<String> discoveryAnswerThreeLiveData;
+
+    private MutableLiveData<ArrayList<JournalEntry>> journalEntriesLiveData;
 
 
 
@@ -144,6 +152,33 @@ public class FirebaseRepository implements RepositoryInterface {
     }
 
     @Override
+    public MutableLiveData<ArrayList<JournalEntry>> getJournalEntriesLiveData() {
+
+        journalEntriesLiveData = new MutableLiveData<>();
+
+        firebaseFirestore.collection("users").document(getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+
+                    DocumentSnapshot documentSnapshot = task.getResult();
+
+                    if(documentSnapshot.exists()) {
+
+                        User user = documentSnapshot.toObject(User.class);
+
+                        journalEntriesLiveData.postValue(user.getJournalEntries());
+
+                    }
+
+                }
+            }
+        });
+
+        return journalEntriesLiveData;
+    }
+
+    @Override
     public void updateTorchMessage(String newTorchMessage) {
 
         DocumentReference documentReference  = getUserDocument(getUid());
@@ -178,6 +213,16 @@ public class FirebaseRepository implements RepositoryInterface {
         DocumentReference documentReference  = getUserDocument(getUid());
 
         documentReference.update("torchDiscoveryThreeAnswer", discoveryThreeAnswer);
+
+
+    }
+
+    @Override
+    public void addJournalEntry(JournalEntry newJournalEntry) {
+
+        DocumentReference documentReference  = getUserDocument(getUid());
+
+        documentReference.update("journalEntries", FieldValue.arrayUnion(newJournalEntry));
 
 
     }
