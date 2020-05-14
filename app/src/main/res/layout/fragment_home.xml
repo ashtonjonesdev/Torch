@@ -42,7 +42,6 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:text=""
-                android:hint="Goal/Focus"
                 android:textAlignment="center"
                 android:textColor="@color/colorOnSurface"
                 android:textStyle="bold"

@@ -13,6 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         android:text="Days aligned: "
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,19 +39,119 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/days_aligned_text_view" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/achievements_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/mountain_drawable_progress"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:src="@drawable/single_mountain"
+        app:layout_constraintBottom_toTopOf="@+id/check_in_button_progress_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/days_aligned_value_text_view"
-        android:textAlignment="center"
-        android:text="Achievements: "/>
+        app:layout_constraintTop_toBottomOf="@id/days_aligned_value_text_view" />
 
-<!--    <LinearLayout-->
+    <ImageView
+        android:id="@+id/person_1_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="48dp"
+         />
+
+    <ImageView
+        android:id="@+id/person_2_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="100dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/person_3_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginBottom="152dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/person_4_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="116dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginBottom="202dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/person_5_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="144dp"
+        android:layout_marginLeft="144dp"
+        android:layout_marginBottom="254dp"
+        android:visibility="invisible"
+        />
+
+    <ImageView
+        android:id="@+id/person_6_drawable_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_directions_walk_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mountain_drawable_progress"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="280dp"
+        android:visibility="invisible"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/keep_climbing_text_view_progress"
+        style="@style/TextAppearance.MaterialComponents.Body2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="The more days you align, the higher you will climb. Stay focused to reach the top!"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mountain_drawable_progress" />
+
+
+
+
+
+    <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:orientation="horizontal"-->

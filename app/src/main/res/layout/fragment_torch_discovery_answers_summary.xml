@@ -14,12 +14,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/discovery_summary_question_one_text_view"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/colorPrimary"
             android:text="What is most important to me?"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:textSize="18sp"
             android:layout_marginEnd="16dp"
             android:text=""
             android:textAlignment="center"
@@ -46,12 +48,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/discovery_summary_question_two_text_view"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/colorPrimary"
             android:text="Have I released myself to my goal, focus, or purpose?"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +72,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:textSize="18sp"
             android:text=""
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,12 +83,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/discovery_summary_question_three_text_view"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
+            android:textColor="@color/colorPrimary"
             android:text="What are my obstacles?"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,12 +108,27 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text=""
+            android:textSize="18sp"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discovery_summary_question_three_text_view" />
+
+        <LinearLayout
+            android:id="@+id/horizontal_divider_1_torch_discovery_answers_summary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:layout_constraintTop_toBottomOf="@id/discovery_summary_answer_three_text_view"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/current_torch_discovery_summary_text_view"
@@ -118,13 +138,14 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="Your current torch:"
+            android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/discovery_summary_answer_three_text_view"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"/>
+            style="@style/TextAppearance.MaterialComponents.Headline6"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/torch_message_discovery_summary"
@@ -134,12 +155,27 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text=""
+            android:textSize="18sp"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/current_torch_discovery_summary_text_view" />
+
+        <LinearLayout
+            android:id="@+id/horizontal_divider_2_torch_discovery_answers_summary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            app:layout_constraintTop_toBottomOf="@id/torch_message_discovery_summary"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/misalignment_text_view"
@@ -150,7 +186,7 @@
             android:layout_marginEnd="16dp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryLight"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             android:text="Is there a misalignment?"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,9 +201,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_goneMarginEnd="16dp"
+            android:layout_marginBottom="32dp"
             android:text="Yes"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/no_button_misalignment_discovery_summary"
             app:layout_constraintTop_toBottomOf="@id/misalignment_text_view" />
 
@@ -176,10 +214,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
             android:text="No"
             app:layout_constraintEnd_toStartOf="@+id/yes_button_misalignment_discovery_summary"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/misalignment_text_view" />
 

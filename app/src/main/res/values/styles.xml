@@ -18,8 +18,8 @@
         <item name="colorPrimaryVariant">@color/colorPrimaryLight</item> // Lighter shade of primary color
 
         <!--Secondary colors: accent colors for widgets that need to stand out-->
-        <item name="colorSecondary">@color/colorSecondary</item> //
-        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item> //
+        <item name="colorSecondary">@color/colorPrimary</item> //
+        <item name="colorSecondaryVariant">@color/colorPrimaryLight</item> //
 
         <!--Error colors-->
         <item name="colorError">@color/colorError</item>
@@ -65,9 +65,13 @@
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearanceMediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/AppShapeAppearanceLargeComponent</item>
 
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+
 
 
     </style> // App Theme
+
+
 
 
     <!--Styles for Shape Theming: Can customize the corner cut(rounded or cut) and the size of the cut-->

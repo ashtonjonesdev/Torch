@@ -7,16 +7,6 @@ import dev.ashtonjones.torch.datalayer.repository.RepositoryInterface;
 
 public class ChangeTorchViewModel extends ViewModel {
 
-    public ChangeTorchViewModel() {
-        firebaseRespository = new FirebaseRepository();
-    }
 
-    private RepositoryInterface firebaseRespository;
-
-    public void updateTorchMessage(String newTorchMessage) {
-
-        firebaseRespository.updateTorchMessage(newTorchMessage);
-
-    }
 
 }

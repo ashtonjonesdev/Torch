@@ -78,6 +78,54 @@ public class ProgressFragment extends Fragment {
             @Override
             public void onChanged(Long aLong) {
                 binding.daysAlignedValueTextView.setText(aLong.toString());
+
+                if(aLong >= 0 && aLong < 20) {
+
+                    binding.person1DrawableProgress.setVisibility(View.VISIBLE);
+
+                }
+
+                if(aLong >= 20 && aLong < 40 ) {
+
+                    binding.person1DrawableProgress.setVisibility(View.INVISIBLE);
+
+                    binding.person2DrawableProgress.setVisibility(View.VISIBLE);
+
+                }
+
+                if(aLong >= 40 && aLong < 60 ) {
+
+                    binding.person2DrawableProgress.setVisibility(View.INVISIBLE);
+
+                    binding.person3DrawableProgress.setVisibility(View.VISIBLE);
+
+
+                }
+
+                if(aLong >= 60 && aLong < 80) {
+
+                    binding.person3DrawableProgress.setVisibility(View.INVISIBLE);
+
+                    binding.person4DrawableProgress.setVisibility(View.VISIBLE);
+
+                }
+
+                ;if(aLong >= 80 && aLong < 100) {
+
+                    binding.person4DrawableProgress.setVisibility(View.INVISIBLE);
+
+                    binding.person5DrawableProgress.setVisibility(View.VISIBLE);
+
+                }
+
+                if(aLong >= 100) {
+
+                    binding.person5DrawableProgress.setVisibility(View.INVISIBLE);
+
+                    binding.person6DrawableProgress.setVisibility(View.VISIBLE);
+
+                }
+
             }
         });
     }

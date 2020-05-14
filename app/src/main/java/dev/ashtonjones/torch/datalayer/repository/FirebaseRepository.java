@@ -257,6 +257,14 @@ public class FirebaseRepository implements RepositoryInterface {
 
     }
 
+    @Override
+    public void resetNumberOfDaysAligned() {
+
+        DocumentReference documentReference  = getUserDocument(getUid());
+
+        documentReference.update("numberOfDaysAligned", 0);
+
+    }
 
 
     @Override

@@ -17,8 +17,14 @@
     <item
         android:title="About developer"
         app:showAsAction="never"
-        android:orderInCategory="90"
+        android:orderInCategory="80"
         android:id="@+id/about_developer_fragment_dest"/>
+
+    <item
+        android:title="Settings"
+        app:showAsAction="never"
+        android:orderInCategory="90"
+        android:id="@+id/settings_fragment_dest"/>
 
 
     <item

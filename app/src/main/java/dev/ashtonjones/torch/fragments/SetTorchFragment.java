@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.os.Handler;
@@ -22,6 +23,7 @@ import java.util.Map;
 
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentSetTorchBinding;
+import dev.ashtonjones.torch.datalayer.viewmodel.SetTorchViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,8 @@ import dev.ashtonjones.torch.databinding.FragmentSetTorchBinding;
 public class SetTorchFragment extends Fragment {
 
     private FragmentSetTorchBinding binding;
+
+    private SetTorchViewModel viewModel;
 
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -50,7 +54,15 @@ public class SetTorchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        setUpViewModel();
+
         setUpClickListeners();
+    }
+
+    private void setUpViewModel() {
+
+        viewModel = new ViewModelProvider(this).get(SetTorchViewModel.class);
+
     }
 
     private void setUpClickListeners() {
@@ -64,13 +76,19 @@ public class SetTorchFragment extends Fragment {
                 // TODO: Save the torch text to the database
                 if(binding.textInputEditTextTorchSetTorch.getText() != null && binding.textInputEditTextTorchSetTorch.getText().length() > 0 ) {
 
-                    String torchText = binding.textInputEditTextTorchSetTorch.getText().toString();
+                    // Update torchMessage in database
+                    String newTorchMessage = binding.textInputEditTextTorchSetTorch.getText().toString();
 
-                    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                    viewModel.updateTorchMessage(newTorchMessage);
 
-                    DocumentReference documentReference = firebaseFirestore.collection("users").document(firebaseUser.getUid());
+                    // Change drawable from unlit to lit
+                    binding.unlitTorchSetTorch.setImageResource(R.drawable.app_icon_torch);
 
-                    documentReference.update("torchMessage", torchText);
+                    // Change text of main text view
+                    binding.setYourTorchTextView.setText("Your torch is lit!");
+
+                    // Reset numberOfDaysAligned
+                    viewModel.resetNumberOfDaysAligned();
 
                     // Change the drawable from unlit torch to lit torch
                     binding.unlitTorchSetTorch.setImageResource(R.drawable.app_icon_torch);

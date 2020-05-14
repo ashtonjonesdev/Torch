@@ -43,6 +43,8 @@ public interface RepositoryInterface {
 
     void incrementNumberOfDaysAligned();
 
+    void resetNumberOfDaysAligned();
+
     /**
      *
      * ADD METHODS
