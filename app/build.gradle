@@ -11,6 +11,10 @@ android {
         enabled = true
     }
 
+    dataBinding {
+        enabled true
+    }
+
     defaultConfig {
         applicationId "dev.ashtonjones.torch"
         minSdkVersion 21
@@ -81,4 +85,8 @@ dependencies {
 
     // Had to add this to avoid weird bug
     implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.1'
+
 }

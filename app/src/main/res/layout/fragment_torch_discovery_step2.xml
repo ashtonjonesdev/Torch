@@ -6,23 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.WelcomeFragment">
 
-
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/discover_your_torch_step_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Discover your torch"
-        android:textColor="@color/colorPrimary"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"/>
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/discover_your_torch_step_two"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"/>
 
     <com.google.android.material.textview.MaterialTextView
@@ -47,7 +30,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/unlit_torch_torch_discovery_step_2"
-        android:layout_margin="32dp"/>
+        android:layout_margin="32dp"
+        style="@style/TextAppearance.MaterialComponents.Headline5"/>
 
     <LinearLayout
         android:id="@+id/horizontal_divider_torch_discovery_step_2_screen"

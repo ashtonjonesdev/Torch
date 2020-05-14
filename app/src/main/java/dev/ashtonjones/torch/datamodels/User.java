@@ -8,11 +8,18 @@ public class User {
     private String name;
     private String uID;
     private String torchMessage;
+    private int numberOfDaysAligned;
     private ArrayList<JournalEntry> journalEntries;
 
     public User(String name, String uID) {
         this.name = name;
         this.uID = uID;
+    }
+
+    public User(String name, String uID, int numberOfDaysAligned) {
+        this.name = name;
+        this.uID = uID;
+        this.numberOfDaysAligned = numberOfDaysAligned;
     }
 
     public User(String name, String uID, String torchMessage) {
@@ -50,5 +57,9 @@ public class User {
 
     public void setTorchMessage(String torchMessage) {
         this.torchMessage = torchMessage;
+    }
+
+    public int getNumberOfDaysAligned() {
+        return numberOfDaysAligned;
     }
 }

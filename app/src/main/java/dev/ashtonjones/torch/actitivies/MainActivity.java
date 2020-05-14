@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dev.ashtonjones.torch.R;
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private NavController navController;
 
     private AppBarConfiguration appBarConfiguration;
+
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void initViews() {
 
         topAppToolbar = findViewById(R.id.top_app_bar_toolbar_main_activity);
@@ -57,13 +62,17 @@ public class MainActivity extends AppCompatActivity {
 
         navController = navHostFragment.getNavController();
 
-        appBarConfiguration = new AppBarConfiguration.Builder(R.id.home_fragment_dest).build();
+        appBarConfiguration = new AppBarConfiguration.Builder(R.id.home_fragment_dest, R.id.progress_fragment_dest, R.id.torch_discovery_answers_summary_fragment_dest).build();
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
     }
 
     private void initUIComponentsWithNavigation() {
 
         NavigationUI.setupWithNavController(topAppToolbar, navController, appBarConfiguration);
+
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
 
     @Override
@@ -97,17 +106,32 @@ public class MainActivity extends AppCompatActivity {
 
                     topAppToolbar.setVisibility(View.GONE);
 
+
                 }
 
                 else {
 
                     topAppToolbar.setVisibility(View.VISIBLE);
 
+
+                }
+
+                if(destination.getId() == R.id.home_fragment_dest || destination.getId() == R.id.progress_fragment_dest || destination.getId() == R.id.torch_discovery_answers_summary_fragment_dest) {
+
+                    bottomNavigationView.setVisibility(View.VISIBLE);
+
+                }
+
+                else {
+
+                    bottomNavigationView.setVisibility(View.GONE);
+
                 }
             }
         });
 
     }
+
 
     private void signOut() {
 
@@ -119,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.sign_in_nav_graph);
             }
         });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
 }

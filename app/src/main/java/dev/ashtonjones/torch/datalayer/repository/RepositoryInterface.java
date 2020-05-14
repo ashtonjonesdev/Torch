@@ -24,6 +24,8 @@ public interface RepositoryInterface {
 
     MutableLiveData<ArrayList<JournalEntry>> getJournalEntriesLiveData();
 
+    MutableLiveData<Long> getNumberOfDaysAlignedLiveData();
+
     /**
      *
      * UPDATE METHODS
@@ -38,6 +40,8 @@ public interface RepositoryInterface {
     void updateTorchDiscoveryTwoAnswer(String discoveryTwoAnswer);
 
     void updateTorchDiscoveryThreeAnswer(String discoveryThreeAnswer);
+
+    void incrementNumberOfDaysAligned();
 
     /**
      *

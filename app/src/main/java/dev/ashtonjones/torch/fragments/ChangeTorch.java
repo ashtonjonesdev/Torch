@@ -80,7 +80,7 @@ public class ChangeTorch extends Fragment {
                     delayHandler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Navigation.findNavController(getView()).popBackStack();
+                            Navigation.findNavController(getView()).navigate(R.id.torch_discovery_answers_summary_fragment_dest);
                         }
                     }, 2000);
 

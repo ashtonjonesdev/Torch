@@ -17,6 +17,11 @@ import android.widget.Toast;
 
 import com.google.android.material.slider.Slider;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Calendar;
+import java.util.Date;
+
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.databinding.FragmentAddJournalEntryBinding;
 import dev.ashtonjones.torch.datalayer.repository.FirebaseRepository;
@@ -154,16 +159,33 @@ public class AddJournalEntry extends Fragment {
 
         }
 
-        else {
-
-            journalEntry.setJournalMessage("No entry");
-
-
-        }
 
         journalEntry.setActionsAligned(actionsAligned);
 
         journalEntry.setLevelOfAlignment(levelOfAlignment);
+
+        Calendar calendar = Calendar.getInstance();
+
+        int monthInt = calendar.get(Calendar.MONTH);
+
+        int dayInt = calendar.get(Calendar.DATE);
+
+        int yearInt = calendar.get(Calendar.YEAR);
+
+        String currentDate = monthInt + "/" + dayInt + "/" + yearInt;
+
+        Log.d(LOG_TAG, "Current Year: " + yearInt + " Current month: " + monthInt + " Current day: " + dayInt);
+
+        Log.d(LOG_TAG, currentDate);
+
+        journalEntry.setDate(currentDate);
+
+
+
+
+
+
+
 
     }
 

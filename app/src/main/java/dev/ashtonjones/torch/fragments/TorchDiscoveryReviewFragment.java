@@ -49,7 +49,7 @@ public class TorchDiscoveryReviewFragment extends Fragment {
         binding.torchDiscoverySummaryFinishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getView()).navigate(R.id.torch_discovery_answers_summary_fragment_dest);
+                Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
             }
         });
 

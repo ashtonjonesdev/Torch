@@ -52,7 +52,21 @@ public class SelectableItemBinderJournalEntry extends ItemBinder<JournalEntry, S
 
         }
 
+        if(item.isActionsAligned()) {
+
+            holder.checkMarkImageView.setImageResource(R.drawable.ic_check_green_24dp);
+
+        }
+
+        else {
+
+            holder.checkMarkImageView.setImageResource(R.drawable.ic_clear_red_24dp);
+
+        }
+
         holder.titleTextView.setText(item.getJournalMessage());
+
+        holder.dateTextView.setText(item.getDate());
 
     }
 
@@ -76,6 +90,10 @@ public class SelectableItemBinderJournalEntry extends ItemBinder<JournalEntry, S
 
         private ImageView emojiImageView;
 
+        private ImageView checkMarkImageView;
+
+        private MaterialTextView dateTextView;
+
 
         public ViewHolder(View itemView) {
 
@@ -88,6 +106,10 @@ public class SelectableItemBinderJournalEntry extends ItemBinder<JournalEntry, S
             emojiImageView = itemView.findViewById(R.id.emoji_image_view_journal_entry_item);
 
             constraintLayout = itemView.findViewById(R.id.constraint_layout_journal_entry_item);
+
+            checkMarkImageView = itemView.findViewById(R.id.check_mark_image_view_journal_entry_item);
+
+            dateTextView = itemView.findViewById(R.id.journal_entry_date_text_view);
 
 
             // Select/Deselect the card on click

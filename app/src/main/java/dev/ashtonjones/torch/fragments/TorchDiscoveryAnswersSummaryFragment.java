@@ -56,7 +56,7 @@ public class TorchDiscoveryAnswersSummaryFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
+                Navigation.findNavController(getView()).navigate(R.id.discover_or_set_torch_fragment_dest);
 
             }
         });

@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 
         setUpViewModel();
 
-        setUpSpeedDialFAB();
+//        setUpSpeedDialFAB();
     }
 
     private void setUpViewModel() {
@@ -71,61 +71,59 @@ public class HomeFragment extends Fragment {
 
     }
 
-
-    private void setUpSpeedDialFAB() {
-
-        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_change_torch_action, R.drawable.ic_call_split_black_24dp).setLabel("Change torch").create());
-
-        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_journal_action, R.drawable.ic_format_align_left_black_24dp).setLabel("View journal").create());
-
-        binding.speedDialFab.setOnChangeListener(new SpeedDialView.OnChangeListener() {
-            @Override
-            public boolean onMainActionSelected() {
-                return false;
-            }
-
-            @Override
-            public void onToggleChanged(boolean isOpen) {
-
-            }
-        });
-
-
-        binding.speedDialFab.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
-            @Override
-            public boolean onActionSelected(SpeedDialActionItem actionItem) {
-
-                switch (actionItem.getId()) {
-
-                    case R.id.fab_change_torch_action:
-
-                        Toast.makeText(getContext(), "Change torch action clicked!", Toast.LENGTH_SHORT).show();
-
-                        Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
-
-                    case R.id.fab_journal_action:
-
-                        Toast.makeText(getContext(), "Journal action clicked!", Toast.LENGTH_SHORT).show();
-
-                        Navigation.findNavController(getView()).navigate(R.id.journal_fragment_dest);
-
-                        return false;
-
-                    default:
-
-                        Toast.makeText(getContext(), "Error in SpeedDial Fab action", Toast.LENGTH_SHORT).show();
-
-                        Navigation.findNavController(getView()).navigate(R.id.journal_fragment_dest);
-
-                        return false;
-
-                }
-
-            }
-        });
-
-
-    }
+//
+//    private void setUpSpeedDialFAB() {
+//
+//        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_change_torch_action, R.drawable.ic_call_split_black_24dp).setLabel("Change torch").create());
+//
+//        binding.speedDialFab.addActionItem(new SpeedDialActionItem.Builder(R.id.fab_journal_action, R.drawable.ic_format_align_left_black_24dp).setLabel("View journal").create());
+//
+//        binding.speedDialFab.setOnChangeListener(new SpeedDialView.OnChangeListener() {
+//            @Override
+//            public boolean onMainActionSelected() {
+//                return false;
+//            }
+//
+//            @Override
+//            public void onToggleChanged(boolean isOpen) {
+//
+//            }
+//        });
+//
+//
+//        binding.speedDialFab.setOnActionSelectedListener(new SpeedDialView.OnActionSelectedListener() {
+//            @Override
+//            public boolean onActionSelected(SpeedDialActionItem actionItem) {
+//
+//                switch (actionItem.getId()) {
+//
+//                    case R.id.fab_change_torch_action:
+//
+//                        Toast.makeText(getContext(), "Change torch action clicked!", Toast.LENGTH_SHORT).show();
+//
+//                        Navigation.findNavController(getView()).navigate(R.id.change_torch_fragment_dest);
+//
+//                    case R.id.fab_journal_action:
+//
+//                        Toast.makeText(getContext(), "Journal action clicked!", Toast.LENGTH_SHORT).show();
+//
+//                        Navigation.findNavController(getView()).navigate(R.id.journal_fragment_dest);
+//
+//                        return false;
+//
+//                    default:
+//
+//                        Toast.makeText(getContext(), "Error in SpeedDial Fab action", Toast.LENGTH_SHORT).show();
+//
+//                        return false;
+//
+//                }
+//
+//            }
+//        });
+//
+//
+//    }
 
     @Override
     public void onResume() {

@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/change_torch_fragment_dest"
         android:name="dev.ashtonjones.torch.fragments.ChangeTorch"
-        android:label="Change your torch"
+        android:label="Set your torch"
         tools:layout="@layout/fragment_change_torch" />
     <fragment
         android:id="@+id/journal_fragment_dest"
@@ -121,4 +121,18 @@
         android:name="dev.ashtonjones.torch.fragments.AddJournalEntry"
         android:label="Add Entry"
         tools:layout="@layout/fragment_add_journal_entry" />
+    <fragment
+        android:id="@+id/progress_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress" />
+    <fragment
+        android:id="@+id/check_in_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.CheckInFragment"
+        android:label="Check In" />
+    <fragment
+        android:id="@+id/discover_or_set_torch_fragment_dest"
+        android:name="dev.ashtonjones.torch.fragments.DiscoverOrLightTorchFragment"
+        android:label="Discover or Set Torch"
+        tools:layout="@layout/fragment_discover_or_light_torch" />
 </navigation>

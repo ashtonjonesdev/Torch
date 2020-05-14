@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import dev.ashtonjones.torch.R;
 import dev.ashtonjones.torch.adapters.SelectableItemBinderJournalEntry;
@@ -132,6 +133,7 @@ public class JournalFragment extends Fragment {
         viewModel.getJournalEntriesLiveData().observe(this, new Observer<ArrayList<JournalEntry>>() {
             @Override
             public void onChanged(ArrayList<JournalEntry> journalEntries) {
+
                 listSection.set(journalEntries);
             }
         });

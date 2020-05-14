@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actitivies.MainActivity"
-    android:id="@+id/root_view_main_activity">
+    android:id="@+id/relative_layout_main_activity">
 
-    <!--Top App Bar-->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout_view_main_activity"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinator_layout_main_activity"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true">
+        android:layout_height="wrap_content"
+        tools:context=".actitivies.MainActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/top_app_bar_toolbar_main_activity"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+
+        <!--Top App Bar-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout_view_main_activity"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:elevation="8dp">
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/nav_host_fragment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.appcompat.widget.Toolbar>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/top_app_bar_toolbar_main_activity"
+                style="@style/Widget.MaterialComponents.Toolbar.Surface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                app:menu="@menu/top_app_bar_menu">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            </com.google.android.material.appbar.MaterialToolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
     <fragment
@@ -31,7 +47,17 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/app_bar_layout_view_main_activity"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/coordinator_layout_main_activity"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_nav_graph" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu" />
+
 </RelativeLayout>
