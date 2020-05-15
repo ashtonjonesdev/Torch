@@ -47,14 +47,9 @@ Copyright 2020 Ashton Jones
 
 
 ## 📸 Screenshots
-<img src="./screenshots/Screenshot_20200515-095300_Torch copy.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130425_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130454_Reply.jpg" width="30%" height="30%">&ensp;
+<img src="./screenshots/Screenshot_20200515-095300_Torch copy.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200515-095318_Torch copy.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200515-095324_Torch copy.jpg" width="30%" height="30%">&ensp;
 ------
-<img src="./screenshots/Screenshot_20200413-130009_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130020_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130028_Reply.jpg" width="30%" height="30%">&ensp;
+<img src="./screenshots/Screenshot_20200515-095359_Torch copy.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200515-095405_Torch copy.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200515-095429_Torch copy.jpg" width="30%" height="30%">&ensp;
 ------
-<img src="./screenshots/Screenshot_20200413-130044_Android System.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130246_Messages.jpg" width="30%" height="30%">&ensp;
-------
-<img src="./screenshots/Screenshot_20200413-130352_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130414_Reply.jpg" width="30%" height="30%">&ensp;
-------
-<img src="./screenshots/Screenshot_20200413-130259_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130305_Reply.jpg" width="30%" height="30%">&ensp;<img src="./screenshots/Screenshot_20200413-130310_Reply.jpg" width="30%" height="30%">&ensp;
-
+<img src="./screenshots/Screenshot_20200515-095446_Torch copy.jpg" width="30%" height="30%">&ensp;
 
