@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private static final String PRIMARY_CHANNEL_ID = "primary_notification_channel";
     private SharedPreferences sharedPreferences;
 
+    boolean alarmHasAlreadyBeenSet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +84,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         createNotificationChannel();
 
-        if(sharedPreferences.getBoolean("notifications_pref_key", true) == true) {
-
-            setAlarm();
-
-        }
 
     }
 
@@ -194,7 +191,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             notificationChannel.enableVibration(true);
             notificationChannel.setDescription("Check in reminder to log your torch progress");
             notificationManager.createNotificationChannel(notificationChannel);
-
         }
 
     }
@@ -204,11 +200,12 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 0
+        );
 
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmPendingIntent);
 
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_DAY,
-                AlarmManager.INTERVAL_DAY, alarmPendingIntent);
+        alarmHasAlreadyBeenSet = true;
 
 
     }
@@ -223,6 +220,19 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     public void onResume() {
         super.onResume();
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+
+        if(sharedPreferences.getBoolean("notifications_pref_key", true) == true) {
+
+            if(!alarmHasAlreadyBeenSet) {
+
+                setAlarm();
+
+                alarmHasAlreadyBeenSet = true;
+
+            }
+
+        }
+
     }
 
     @Override
@@ -249,7 +259,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
                 Toast.makeText(getApplicationContext(), "Notifications are off", Toast.LENGTH_SHORT).show();
 
-                alarmManager.cancel(alarmPendingIntent);
+                notificationManager.cancelAll();
+
+                if(alarmManager != null) {
+
+                    alarmManager.cancel(alarmPendingIntent);
+
+                }
 
             }
 

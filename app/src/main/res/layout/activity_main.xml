@@ -32,7 +32,7 @@
                 style="@style/Widget.MaterialComponents.Toolbar.Surface"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="8dp"
+                android:elevation="16dp"
                 app:menu="@menu/top_app_bar_menu">
 
             </com.google.android.material.appbar.MaterialToolbar>

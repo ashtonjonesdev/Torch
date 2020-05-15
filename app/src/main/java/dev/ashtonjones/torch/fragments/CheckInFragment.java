@@ -111,16 +111,7 @@ public class CheckInFragment extends Fragment {
 
                 if (yesButtonSelected) {
 
-                    Toast.makeText(getContext(), "Yes button was selected!", Toast.LENGTH_SHORT).show();
-
                     viewModel.incrementNumberOfDaysAlignedLiveData();
-
-                }
-
-                else {
-
-                    Toast.makeText(getContext(), "No  button was selected!", Toast.LENGTH_SHORT).show();
-
 
                 }
 
