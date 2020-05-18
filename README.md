@@ -1,6 +1,6 @@
 # 🔥 Torch
 -------
-Discover and focus on your "torch"- your primary focus, goal, or purpose that is guiding you in life
+Discover and stay focused on what is most important to you
 * ✅ Discover your torch with guiding questions
 * ✅ Stay focused on your torch by limiting you to only being able to set one goal at a time
 * ✅ Daily check-in to help you reflect if your actions are aligned with your goal
