@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -125,6 +126,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         if (item.getItemId() == R.id.sign_out_button) {
 
             signOut();
+
+        }
+
+
+        if(item.getItemId() == R.id.tips_menu_item) {
+
+            openMediumTipsArticle();
 
         }
 
@@ -270,6 +278,18 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             }
 
         }
+
+    }
+
+    private void openMediumTipsArticle() {
+
+        String articleUrl = "https://medium.com/@TJgrapes/introducing-torch-5ed629a84378";
+
+        Uri articleUri = Uri.parse(articleUrl);
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, articleUri);
+
+        startActivity(intent);
 
     }
 }
