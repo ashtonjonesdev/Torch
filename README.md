@@ -1,4 +1,8 @@
 # 🔥 Torch
+
+<p align="center"><img src="./gif/torchdemo.gif"></p>
+
+-------
 -------
 Discover and stay focused on what is most important to you
 * ✅ Discover your torch with guiding questions
